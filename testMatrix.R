@@ -5,16 +5,16 @@ mdim <- 5
 A <- round(matrix(runif(mdim  * mdim ), mdim , mdim ))
 Ainv <- solve(A)
 Ainv
-A1 <- makeMatrix(A)
+A1 <- makeCacheMatrix(A)
 A1$get()
 #should repeat A 
 A1$getinv()
 #NULL
-cacheMatrix(A1)
+cacheSolve(A1)
 #A inverse
 A1$getinv()  # this is  to show you that the matrix inv has been stored and does not affect anything
 #A inverse
-cacheMatrix(A1)
+cacheSolve(A1)
 #getting cached data
 #A inverse
 
@@ -23,10 +23,8 @@ mdim <-6
 A1$set(round(matrix(runif(mdim  * mdim ), mdim , mdim )))
 A1$getinv()
 #NULL
-cacheMatrix(A1)
+cacheSolve(A1)
 #[1] 25
-cacheMatrix(A1)
+cacheSolve(A1)
 
 A1$get()
-
-
