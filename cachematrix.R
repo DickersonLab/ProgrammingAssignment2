@@ -5,7 +5,7 @@
 ##
 ## Written by Julie A Dickerson, Oct 2014, adapted from code provided by course called cacheman.R
 
-makeMatrix <- function(X = matrix()) {
+makeCacheMatrix <- function(X = matrix()) {
  ## sets up getting or setting the matrix, if does not exist then computes  
   M <- NULL
   set <- function(Y) {
@@ -22,7 +22,7 @@ makeMatrix <- function(X = matrix()) {
 
 
 # cachematrix routine for calling getters and setters
-cacheMatrix <- function(X, ...) {
+cacheSolve <- function(X, ...) {
   M <- X$getinv()
   if(!is.null(M)) {
     message("getting cached data")
