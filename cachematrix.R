@@ -5,31 +5,31 @@
 ##
 ## Written by Julie A Dickerson, Oct 2014, adapted from code provided by course called cacheman.R
 
-makeCacheMatrix <- function(x = matrix()) {
-  
-  m <- NULL
-  set <- function(y) {
-    x <<- y
-    m <<- NULL
+makeMatrix <- function(X = matrix()) {
+ ## sets up getting or setting the matrix, if does not exist then computes  
+  M <- NULL
+  set <- function(Y) {
+    X <<- Y
+    M <<- NULL
   }
-  get <- function() x
-  setinv <- function(solve) m <<- solve
-  getinv <- function() m
+  get <- function() X
+  setinv <- function(solve) M <<- solve
+  getinv <- function() M
   list(set = set, get = get,
        setinv = setinv,
        getinv = getinv)
 }
-}
+
 
 # cachematrix routine for calling getters and setters
-cachematrix <- function(x, ...) {
-  m <- x$getinv()
-  if(!is.null(m)) {
+cacheMatrix <- function(X, ...) {
+  M <- X$getinv()
+  if(!is.null(M)) {
     message("getting cached data")
-    return(m)
+    return(M)
   }
-  data <- x$get()
-  m <- solve(data, ...)
-  x$setinv(m)
-  m
+  data <- X$get()
+  M <- solve(data, ...)
+  X$setinv(M)
+  M
 }
